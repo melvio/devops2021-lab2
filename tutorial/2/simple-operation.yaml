@@ -1,0 +1,35 @@
+swagger: "2.0"
+
+info:
+  version: 1.0.0
+  title: Simple API
+  description: A simple API to learn how to write OpenAPI Specification
+
+schemes:
+  - https
+host: simple.api
+basePath: /openapi101
+
+# Define a get request on /persons
+paths:
+  /persons:
+    get:
+      summary: Gets some persons
+      description: Returns a list containing all persons.
+      responses: # HTTP status responses
+        200:
+          description: A list of Person
+          # the object that will be returned after doing a GET request at this endpoint
+          # is a list containing 3 strings.
+          schema:
+            type: array
+            items:
+              required:
+                - username
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                username:
+                  type: string

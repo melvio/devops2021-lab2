@@ -1,0 +1,14 @@
+# specify openAPI version
+swagger: "2.0"
+
+# information about our API
+info:
+  version: 1.0.0 # Version of our API
+  title: Simple API
+  description: A simple API to learn how to write OpenAPI Specification
+
+schemes:
+  - https                # accepted protocols
+host: simple.api         # basepath
+basePath: /openapi101    # resource base path
+paths: {} # API does nothing for now, so this means empyt paths
