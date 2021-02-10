@@ -59,3 +59,10 @@ paths:
           description: "Invalid ID supplied"
         404:
           description: "student not found"
+
+definitions:
+  Student:
+    required:
+      - student_id
+
+
