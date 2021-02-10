@@ -11,4 +11,4 @@ schemes:
   - https                # accepted protocols
 host: simple.api         # basepath
 basePath: /openapi101    # resource base path
-paths: {} # API does nothing for now, so this means empyt paths
+paths: {} # API does nothing for now, so this means empty paths
