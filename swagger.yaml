@@ -70,11 +70,21 @@ definitions:
     type: "object"
     properties:
       student_id:
-        type: integer
+        type: "integer"
+        format: "int64"
       first_name:
-        type: string
+        type: "string"
       last_name:
-        type: string
+        type: "string"
+      # <https://swagger.io/docs/specification/data-models/dictionaries/>
+      # <https://www.howtobuildsoftware.com/index.php/how-do/Uad/swagger-swagger-ui-how-to-define-a-map-in-swagger>
+      grades:
+        type: "object"
+        # additionalProperties specifies the type of values in a map
+        additionalProperties:
+          type: "integer"
+          format: "int64"
+
 
 
 
