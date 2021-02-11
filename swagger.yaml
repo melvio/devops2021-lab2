@@ -60,9 +60,22 @@ paths:
         404:
           description: "student not found"
 
+# documentation:
+# * <https://swagger.io/docs/specification/data-models/> (3.0)
+# * <https://swagger.io/specification/v2/> (2.0)
+
+# exercise 2.1a
 definitions:
   Student:
-    required:
-      - student_id
+    type: "object"
+    properties:
+      student_id:
+        type: integer
+      first_name:
+        type: string
+      last_name:
+        type: string
+
+
 
 
