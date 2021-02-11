@@ -70,6 +70,7 @@ paths:
       produces:
         - "application/xml"
         - "application/json"
+      # exercise 2.1b
       parameters:
         - name: "student_id"
           in: "path"
