@@ -1,39 +1,37 @@
 sudo: required
 services:
-  - docker
-# ref: https://docs.travis-ci.com/user/languages/python
+- docker
 language: python
 python:
-  - "3.6"
-
-
-
+- '3.6'
 before_install:
-  - docker version
-  - docker info
+- docker version
+- docker info
 install:
-  - npm install newman
-  - pip install -r requirements.txt
-  - pip install -r test-requirements.txt
-  - pip install nose
-  - pip install Flask-Testing
+- npm install newman
+- pip install -r requirements.txt
+- pip install -r test-requirements.txt
+- pip install nose
+- pip install Flask-Testing
 before_script:
-  - node --version
-  - npm --version
-  - node_modules/.bin/newman --version
-
+- node --version
+- npm --version
+- node_modules/.bin/newman --version
 script:
-  - python -m unittest discover
-  - docker build -t swagger-spring-example:1.0.0 .
-  - docker run --name example_api -d -t -p 127.0.0.1:8080:8080 swagger-spring-example:1.0.0
-  - docker ps
-  - count=0 && until $(curl --output /dev/null --silent --head --fail http://localhost:8080);
-    do printf '.' && sleep 3 && count=$((count+1)) && if [ $count -gt 5 ]; then break;
-    fi; done
-  - docker logs example_api
-  - node_modules/.bin/newman run tests/postman_collection.json -e tests/postman_environment.json
-
+- python -m unittest discover
+- docker build -t swagger-spring-example:1.0.0 .
+- docker run --name example_api -d -t -p 127.0.0.1:8080:8080 swagger-spring-example:1.0.0
+- docker ps
+- count=0 && until $(curl --output /dev/null --silent --head --fail http://localhost:8080);
+  do printf '.' && sleep 3 && count=$((count+1)) && if [ $count -gt 5 ]; then break;
+  fi; done
+- docker logs example_api
+- node_modules/.bin/newman run tests/postman_collection.json -e tests/postman_environment.json
 after_success:
-  - docker login -u $DOCKER_USER -p $DOCKER_PASS
-  - docker tag my_docker_reposetory/swagger_server my_docker_reposetory/swagger_server
-  - docker push my_docker_reposetory/swagger_server
+- docker login -u $DOCKER_USER -p $DOCKER_PASS
+- docker tag my_docker_reposetory/swagger_server my_docker_reposetory/swagger_server
+- docker push my_docker_reposetory/swagger_server
+env:
+  global:
+  - secure: qgYaJy0CuE1xC2vCBveRZrqcpELnaqS8oySnvbtKSoe+0bj1ffZnVTTK3AeSL86E54Z5uGvMPvn209weBii87I16cl012k83LHT8yNsaBlkbAAPLOcWMDHEKtHCPt0gT6Wf0ptiSdxlduvb6WRFkrv1DK8uSQT4GjTSoOtHQQM9zccViwLcrGACvnI8YNJyLUPcqDx0EqQJ8zcbdKm65eXps83RJxFr2cxHT/I49xysslCgdVtXXGdk297TVmjGRP5UAIKO0nxytfEHAEe9TOZgBS22uXYYkoEQd0TMgyTDI/T4ctDeHui8CaZcGDSLJNzbVhLHLr5y8ZyH/au3GJieEDJgLflxVvoGNMOMRKqqdmy/g1AD9xeyyTxBH7NvZCQAcHmz8U8ONy8tBM82Xduhe92CwSuMgcAPuthbCeIbhguddHtBzGDLcB1jPtCOe4PqHH9WobhtHnxUKPVsAd+do5EybmHvDCzKdw+jJVxmdlAMJpV2SRZ71A5UHucD6vZLL3Wp6pR0yMFY13AjAQrrs/H2qPt4fFR14Y+V1gxS5Sp0tIKYYnnVK3W2IO2Po+PjtLke+EnCAHGaRaXq8xcZ+VsKYd40mX/SP85CtrVSnp2zbB4vxM6KMwFVRoKayDjyh+BEUU3MD2jRtWXBHclVx9ZGRj4uTqRte+25VpTk=
+  - secure: hY797q8uZ9sPmBxrFMUVQb77+c20tHgkfdcl9pbCE/W8TNXPEBlhJ86jcToclthF7f7EjhtRddFRjliwq0O1e2zX09c+fo2aXIEmxpAPjujknomAHZba0uFGH09TeZXkexJgUGYChMrAsC34sB/5avoh4dkNcdkswIJUhkv9wF/MUNjH4AbWT/rvt8IHtepd25wWz1u0gBP21s9X3sYnQUkgXIdXbr6Qwxzd0/RhjYdJf0f580qEhIcRhe21GK+rUebTG5H/NVtjR6Cg+pYMrJLxBRGvJw1DPJaUBThCuk1Mi3YeHrC9GNT8r/z/G/x9I2pvSvWZfWx1DWuvtqIYxehrysqG+4+g9G4t8Tonp2FrCbgWrM+WF9pe7ocQbokb1kG+Nd6A38afjIS8+EJ/T5g8zmGUMcS47wZBpcO2NuUJ0OSNABwiVdiz+ejWEx6mpLmcb59m9EtdZJYECyoQyHcht1OQ6JQHHs6N/DOHUR8KawqS9TuqWz2GshsfCYnYenysV/5fReKGjGaXu2qYXpo6QWXrPTWmab2x+PToIsv0DbOFHKhdRt+GEdDFzIg1lfxVc/xZmmhashxA9yG1ib7wzS9pn2dVPXN/rXKXfA/Fa+ajexPdgDqIc2+U0ffXc+lAhyRsX76HeEorbgrgUgTVtlCHINUC5R/zUBePVRw=
