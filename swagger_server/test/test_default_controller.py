@@ -91,8 +91,7 @@ class TestDefaultController(BaseTestCase):
             '/service-api/student/',
             method='GET',
             query_string=query_string)
-        self.assert200(response,
-                       'Response body is : ' + response.data.decode('utf-8'))
+        self.assert404(response)
 
 
 
