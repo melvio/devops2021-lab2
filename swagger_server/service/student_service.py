@@ -36,7 +36,7 @@ def add_student(student) -> Tuple[str, int]:
 def get_student_by_id(student_id, subject):
     student = student_db.get(doc_id=int(student_id))
     if not student:
-        return student
+        return "not found", 404
     student = Student.from_dict(student)
     if not subject or subject in student.grades:
         # student was found, and, if requested, the grade was also found

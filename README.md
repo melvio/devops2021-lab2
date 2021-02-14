@@ -5,17 +5,25 @@
 
 ##  instruction
 
+### dockerhub
 ```bash
 $ sudo docker pull melvio/devops2021-lab2                                                                                   
 $ sudo docker run -p 8888:8080 melvio/devops2021-lab2
 # go to <localhost:8888/service-api/ui>
 ```
 
+
+### travis-ci
+<https://travis-ci.com/github/melvio/devops2021-lab2>
+
+
+### github
+<https://github.com/melvio/devops2021-lab2>
+
+
+
+
 # Swagger generated server
-
-
-
-
 
 ## Overview
 ***************************
