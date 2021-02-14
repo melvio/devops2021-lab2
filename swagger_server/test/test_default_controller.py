@@ -81,6 +81,20 @@ class TestDefaultController(BaseTestCase):
         self.assertTrue(response.is_json)
         self.assertIsInstance(response.json, dict)
 
+    def test_get_student_by_last_name(self):
+        """Test case for get_student_by_last_name
+
+        Search student by last name
+        """
+        query_string = [('last_name', 'last_name_example')]
+        response = self.client.open(
+            '/service-api/student/',
+            method='GET',
+            query_string=query_string)
+        self.assert200(response,
+                       'Response body is : ' + response.data.decode('utf-8'))
+
+
 
 if __name__ == '__main__':
     import unittest
