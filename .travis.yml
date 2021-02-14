@@ -8,6 +8,7 @@ before_install:
 - docker version
 - docker info
 install:
+- nvm install --lts
 - npm install newman
 - pip install -r requirements.txt
 - pip install -r test-requirements.txt
