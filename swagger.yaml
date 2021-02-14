@@ -10,7 +10,6 @@ paths:
   /student:
     post:
       summary: "Add a new student"
-      description: ""
       operationId: "addStudent"
       consumes:
       - "application/json"
@@ -35,6 +34,30 @@ paths:
           description: "already exists"
         405:
           description: "Invalid input"
+
+  # Assignment for extra endpoint:
+  /student/:
+    get:
+      summary: "Search student by last name"
+      operationId: "getStudentByLastName"
+      produces:
+        - "application/xml"
+        - "application/json"
+      # last name search comes in the form of query parameter
+      parameters:
+        - name: "last_name"
+          in: "query"
+          required: true
+          description: "The last name of the student"
+          type: "string"
+      responses:
+        200:
+          description: "A matching student was found for this last name"
+          schema:
+            $ref: "#/definitions/Student"
+        404:
+          description: "No student found matching this last name"
+
   /student/{student_id}:
     get:
       summary: "Find student by ID"
@@ -65,7 +88,6 @@ paths:
         404:
           description: "student not found"
     delete:
-      description: ""
       operationId: "deleteStudent"
       produces:
         - "application/xml"
