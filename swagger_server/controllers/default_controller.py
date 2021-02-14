@@ -60,4 +60,4 @@ def get_student_by_last_name(last_name: str):  # noqa: E501
 
     :rtype: Student
     """
-    return 'do some magic!'
+    return student_service.get_student_by_last_name(last_name=last_name)

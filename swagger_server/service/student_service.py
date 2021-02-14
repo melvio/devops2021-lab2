@@ -35,7 +35,7 @@ def add_student(student) -> Tuple[str, int]:
 
 def get_student_by_id(student_id, subject):
     try:
-        student_id  = int(student_id)
+        student_id = int(student_id)
     except ValueError:
         return "invalid ID supplied", 400
 
@@ -61,3 +61,14 @@ def delete_student(student_id):
         return "not found", 404
     student_db.remove(doc_ids=[student_id])
     return student_id
+
+
+def get_student_by_last_name(last_name: str):
+    last_name_query = Query()
+    matches = student_db.search(last_name_query.last_name == last_name)
+    if matches:
+        # Arbitrarily return the first match in the list.
+        # In real applications this is not acceptable however for now this will do.
+        return matches[0]
+    else:
+        return "not found", 404
