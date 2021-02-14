@@ -34,7 +34,12 @@ def add_student(student) -> Tuple[str, int]:
 
 
 def get_student_by_id(student_id, subject):
-    student = student_db.get(doc_id=int(student_id))
+    try:
+        student_id  = int(student_id)
+    except ValueError:
+        return "invalid ID supplied", 400
+
+    student = student_db.get(doc_id=student_id)
     if not student:
         return "not found", 404
     student = Student.from_dict(student)
@@ -46,8 +51,13 @@ def get_student_by_id(student_id, subject):
 
 
 def delete_student(student_id):
-    student = student_db.get(doc_id=int(student_id))
+    try:
+        student_id = int(student_id)
+    except ValueError:
+        return "invalid ID supplied", 400
+
+    student = student_db.get(doc_id=student_id)
     if not student:
         return "not found", 404
-    student_db.remove(doc_ids=[int(student_id)])
+    student_db.remove(doc_ids=[student_id])
     return student_id
