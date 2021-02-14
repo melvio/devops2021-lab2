@@ -29,8 +29,8 @@ script:
 - node_modules/.bin/newman run tests/postman_collection.json -e tests/postman_environment.json
 after_success:
 - docker login -u $DOCKER_USER -p $DOCKER_PASS
-- docker tag my_docker_reposetory/swagger_server my_docker_reposetory/swagger_server  # TODO: update the repository
-- docker push my_docker_reposetory/swagger_server
+- docker tag melvio/swagger_server /swagger_server
+- docker push melvio/swagger_server
 env:
   global:
   - secure: qgYaJy0CuE1xC2vCBveRZrqcpELnaqS8oySnvbtKSoe+0bj1ffZnVTTK3AeSL86E54Z5uGvMPvn209weBii87I16cl012k83LHT8yNsaBlkbAAPLOcWMDHEKtHCPt0gT6Wf0ptiSdxlduvb6WRFkrv1DK8uSQT4GjTSoOtHQQM9zccViwLcrGACvnI8YNJyLUPcqDx0EqQJ8zcbdKm65eXps83RJxFr2cxHT/I49xysslCgdVtXXGdk297TVmjGRP5UAIKO0nxytfEHAEe9TOZgBS22uXYYkoEQd0TMgyTDI/T4ctDeHui8CaZcGDSLJNzbVhLHLr5y8ZyH/au3GJieEDJgLflxVvoGNMOMRKqqdmy/g1AD9xeyyTxBH7NvZCQAcHmz8U8ONy8tBM82Xduhe92CwSuMgcAPuthbCeIbhguddHtBzGDLcB1jPtCOe4PqHH9WobhtHnxUKPVsAd+do5EybmHvDCzKdw+jJVxmdlAMJpV2SRZ71A5UHucD6vZLL3Wp6pR0yMFY13AjAQrrs/H2qPt4fFR14Y+V1gxS5Sp0tIKYYnnVK3W2IO2Po+PjtLke+EnCAHGaRaXq8xcZ+VsKYd40mX/SP85CtrVSnp2zbB4vxM6KMwFVRoKayDjyh+BEUU3MD2jRtWXBHclVx9ZGRj4uTqRte+25VpTk=
