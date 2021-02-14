@@ -9,13 +9,14 @@ from functools import reduce
 import uuid
 
 from swagger_server.models import Student
+from typing import Tuple
 
 db_dir_path = tempfile.gettempdir()
 db_file_path = os.path.join(db_dir_path, "students.json")
 student_db = TinyDB(db_file_path)
 
 
-def add_student(student):
+def add_student(student) -> Tuple[str, int]:
     queries = []
     query = Query()
     queries.append(query.first_name == student.first_name)
@@ -24,13 +25,15 @@ def add_student(student):
     res = student_db.search(query)
     if res:
         return 'already exists', 409
+    if not student.first_name or not student.last_name:
+        return 'invalid input', 405
 
     doc_id = student_db.insert(student.to_dict())
     student.student_id = doc_id
     return student.student_id
 
 
-def get_student_by_id(student_id, subject):
+def get_student_by_id(student_id, subject) -> Student:
     student = student_db.get(doc_id=int(student_id))
     if not student:
         return student
