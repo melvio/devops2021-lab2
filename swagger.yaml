@@ -35,7 +35,7 @@ paths:
         405:
           description: "Invalid input"
 
-  # Assignment for extra endpoint:
+  # Assignment 2.5: find student by last name
   /student/:
     get:
       summary: "Search student by last name"
@@ -109,6 +109,7 @@ paths:
           description: "Invalid ID supplied"
         404:
          description: "student not found"
+
 # documentation:
 # * <https://swagger.io/docs/specification/data-models/> (3.0)
 # * <https://swagger.io/specification/v2/> (2.0)
