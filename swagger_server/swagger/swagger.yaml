@@ -1,9 +1,9 @@
 ---
 swagger: "2.0"
 info:
-  description: "Swagger tutorial"
+  description: "Swagger API Documentation"
   version: "1.0.0"
-  title: "Swagger tutorial"
+  title: "Student Rest API "
 basePath: "/service-api"
 schemes:
   - "http"
