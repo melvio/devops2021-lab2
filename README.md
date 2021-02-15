@@ -3,13 +3,10 @@
 ***************************
 
 
-##  instruction
-
-### dockerhub
 ```bash
 $ sudo docker pull melvio/devops2021-lab2                                                                                   
 $ sudo docker run -p 8888:8080 melvio/devops2021-lab2
-# go to <localhost:8888/service-api/ui>
+# go to <localhost:8888/service-api/ui> to see the API documentation
 ```
 
 
